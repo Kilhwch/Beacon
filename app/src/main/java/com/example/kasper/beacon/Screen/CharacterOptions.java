@@ -88,7 +88,6 @@ public class CharacterOptions extends Activity {
     public void save(View v) {
         if (name.getText().toString().equals("")) Toast.makeText(getBaseContext(), "Please enter a name", Toast.LENGTH_SHORT).show();
         else {
-
             Intent beacon = getIntent();
             Intent i = new Intent(this, MainScreen.class);
             i.putExtra("beacon", beacon.getParcelableExtra("placeholder"));

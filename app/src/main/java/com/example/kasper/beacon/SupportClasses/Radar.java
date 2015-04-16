@@ -13,7 +13,6 @@ import com.example.kasper.beacon.R;
  */
 public class Radar extends View {
 
-
     private final Drawable drawable;
 
     public Radar(Context context, AttributeSet attrs) {

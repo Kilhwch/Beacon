@@ -64,8 +64,7 @@ public class MainScreen extends Activity implements ASyncResponse {
     @Override
     protected void onCreate(Bundle instance) {
         super.onCreate(instance);
-        setContentView(R.layout.mainscreen); // Note that class and contentView names differ
-                                        // xml code goes into mainscreencreen.xml
+        setContentView(R.layout.mainscreen);
 
         dotView = findViewById(R.id.dot);
 //        tmp_manager.execute();
