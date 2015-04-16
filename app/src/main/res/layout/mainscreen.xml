@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <com.example.kasper.beacon.SupportClasses.Radar
+        android:id="@+id/radarwin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/dot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:visibility="gone"
+        android:src="@drawable/dot"/>
+
+
+    <SeekBar android:id="@+id/mainscr_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:layout_gravity="bottom"
+        android:padding="25dp"
+        android:max="10"
+        android:progress="5"
+        />
+
+    <TextView android:id="@+id/mainscr_distance"
+        android:text="Distance: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        android:gravity="bottom"
+        android:padding="5dp"
+        android:textSize="20dp"
+        />
+
+    <TextView android:id="@+id/mainscr_maxDistance"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="distância máxima"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:textSize="20dp"
+        />
+
+</FrameLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange_light">
+
+
+    <TextView android:id="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ATENÇÃO!"
+        android:textSize="40dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="150dp"
+        />
+
+    <TextView android:id="@+id/center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Está muito quente!!"
+    android:textSize="25dp"
+    android:textColor="@color/white"
+    android:layout_centerHorizontal="true"
+    android:paddingTop="100dp"
+    android:layout_below="@+id/top"
+
+    />
+
+    <TextView android:id="@+id/sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x graus!"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/center"
+        android:paddingBottom="80dp"
+
+        />
+
+    <Button android:id="@+id/warningOk"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:text="OK, entendi"
+        android:background="@drawable/selector_color"
+        android:layout_below="@+id/sub"
+        android:layout_centerHorizontal="true"
+
+
+        />
+
+</RelativeLayout>

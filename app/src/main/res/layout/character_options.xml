@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:background="@drawable/fundoturma"
+    >
+
+    <TextView android:id="@+id/chardetails_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Qual o nome da seu Pranchinha:"
+        android:textColor="@color/primary_text_default_material_dark"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:paddingTop="40dp"
+
+        />
+
+    <EditText android:id="@+id/chardetails_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
+        android:layout_below="@+id/chardetails_name"
+        android:textColor="@android:color/white"
+        android:singleLine="true"
+        />
+
+
+    <TextView android:id="@+id/chardetails_sex"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Qual o SEXO?"
+        android:textColor="@color/primary_text_default_material_dark"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:paddingTop="40dp"
+        android:layout_below="@+id/chardetails_text"
+
+        />
+
+    <Button android:id="@+id/chardetails_menino"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:text="Menino"
+        android:layout_below="@+id/chardetails_sex"
+        />
+
+    <Button android:id="@+id/chardetails_menina"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:text="Menina"
+        android:layout_below="@+id/chardetails_sex"
+        android:layout_alignParentRight="true"
+
+        />
+
+    <TextView android:id="@+id/chardetails_selectdistance"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Qual a distância máxima pode ficar o seu pranchinha?"
+        android:textColor="@color/primary_text_default_material_dark"
+        android:gravity="center"
+        android:paddingTop="40dp"
+        android:layout_below="@+id/chardetails_menina"
+
+        />
+
+    <SeekBar android:id="@+id/chardetails_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="10"
+        android:progress="5"
+        android:layout_below="@+id/chardetails_selectdistance"
+        />
+
+    <TextView android:id="@+id/chardetails_maxDistance"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text=""
+        android:gravity="center"
+        android:layout_below="@+id/chardetails_bar"
+
+        />
+
+    <Button android:id="@+id/sair"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:background="@drawable/selector_color"
+        android:text="Sair"
+        android:layout_alignParentBottom="true"
+        android:onClick="cancel"
+        />
+
+    <Button android:id="@+id/salvar"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:background="@drawable/selector_color"
+        android:text="Salvar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="save"
+
+        />
+
+</RelativeLayout>
