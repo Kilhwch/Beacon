@@ -3,15 +3,15 @@
     <item
         android:state_enabled="true"
         android:state_pressed="true"
-        android:drawable="@color/grey_dark" />
+        android:drawable="@drawable/pressed" />
     <item
         android:state_enabled="true"
         android:state_focused="true"
-        android:drawable="@color/grey_dark" />
+        android:drawable="@drawable/pressed" />
     <item
         android:state_enabled="true"
         android:state_selected="true"
-        android:drawable="@color/grey_dark" />
+        android:drawable="@drawable/pressed" />
     <item
-        android:drawable="@drawable/listitem_border" />
+        android:drawable="@drawable/notpressed" />
 </selector>

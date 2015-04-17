@@ -5,12 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/grey_dark">
 
-
-
     <TextView android:id="@+id/top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lamentamos a sua \n desconexão :(!"
+        android:text="@string/connection_failed_error"
         android:textSize="28dp"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
@@ -21,7 +19,7 @@
     <Button
         android:layout_width="170dp"
         android:layout_height="70dp"
-        android:text="CONFIRMAR"
+        android:text="@string/connection_failed_ok"
         android:background="@drawable/selector_color"
         android:layout_below="@id/top"
         android:layout_centerHorizontal="true"

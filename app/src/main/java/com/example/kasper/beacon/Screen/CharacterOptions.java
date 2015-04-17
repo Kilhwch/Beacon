@@ -29,6 +29,7 @@ public class CharacterOptions extends Activity {
     private EditText name;
     private Button menino;
     private Button menina;
+
     private TextView maxDistance;
 
     @Override
@@ -36,11 +37,11 @@ public class CharacterOptions extends Activity {
         super.onCreate(instance);
         setContentView(R.layout.character_options);
 
-
         name = (EditText) findViewById(R.id.chardetails_text);
         bar = (SeekBar) findViewById(R.id.chardetails_bar);
         menino = (Button) findViewById(R.id.chardetails_menino);
         menina = (Button) findViewById(R.id.chardetails_menina);
+
         maxDistance = (TextView) findViewById(R.id.chardetails_maxDistance);
         init();
 
@@ -59,7 +60,7 @@ public class CharacterOptions extends Activity {
         menino.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (!male) menina.setBackgroundResource(R.color.grey);
+                if (!male) menina.setBackgroundResource(R.color.darkerwhite);
                 menino.setBackgroundResource(R.color.blue);
                 male = true;
                 buttonDelay(menino);
@@ -70,19 +71,13 @@ public class CharacterOptions extends Activity {
         menina.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (male) menino.setBackgroundResource(R.color.grey);
+                if (male) menino.setBackgroundResource(R.color.darkerwhite);
                 menina.setBackgroundResource(R.color.pink);
                 male = false;
                 buttonDelay(menina);
                 return true;
             }
         });
-    }
-
-    public void init() {
-        maxDistance.setText("distância máxima " + barValue);
-        menino.setBackgroundResource(R.color.blue);
-        menino.setPressed(true);
     }
 
     public void save(View v) {
@@ -97,7 +92,14 @@ public class CharacterOptions extends Activity {
     }
 
     public void cancel(View v) {
-        this.onBackPressed();
+        onBackPressed();
+    }
+
+
+    public void init() {
+        maxDistance.setText("distância máxima " + barValue);
+        menino.setBackgroundResource(R.color.blue);
+        menino.setPressed(true);
     }
 
     public void buttonDelay(final Button button) {

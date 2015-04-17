@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Bluetooth \n HABILITADO..."
+        android:text="@string/bluetooth_load"
         android:paddingTop="30dp"
         android:gravity="center"
         android:layout_centerInParent="true"

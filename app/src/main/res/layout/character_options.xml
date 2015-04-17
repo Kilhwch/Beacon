@@ -11,7 +11,7 @@
     <TextView android:id="@+id/chardetails_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Qual o nome da seu Pranchinha:"
+        android:text="@string/select_char_name"
         android:textColor="@color/primary_text_default_material_dark"
         android:textSize="20dp"
         android:gravity="center"
@@ -34,7 +34,7 @@
     <TextView android:id="@+id/chardetails_sex"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Qual o SEXO?"
+        android:text="@string/select_char_sex"
         android:textColor="@color/primary_text_default_material_dark"
         android:textSize="20dp"
         android:gravity="center"
@@ -45,25 +45,24 @@
 
     <Button android:id="@+id/chardetails_menino"
         android:layout_width="130dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:text="Menino"
         android:layout_below="@+id/chardetails_sex"
         />
 
     <Button android:id="@+id/chardetails_menina"
         android:layout_width="130dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:text="Menina"
         android:layout_below="@+id/chardetails_sex"
         android:layout_alignParentRight="true"
-
         />
 
     <TextView android:id="@+id/chardetails_selectdistance"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:text="Qual a distância máxima pode ficar o seu pranchinha?"
+        android:text="@string/select_char_distance"
         android:textColor="@color/primary_text_default_material_dark"
         android:gravity="center"
         android:paddingTop="40dp"
@@ -92,8 +91,8 @@
     <Button android:id="@+id/sair"
         android:layout_width="130dp"
         android:layout_height="60dp"
-        android:background="@drawable/selector_color"
-        android:text="Sair"
+        android:background="@drawable/selector_button"
+        android:text="@string/select_char_cancel"
         android:layout_alignParentBottom="true"
         android:onClick="cancel"
         />
@@ -101,12 +100,11 @@
     <Button android:id="@+id/salvar"
         android:layout_width="130dp"
         android:layout_height="60dp"
-        android:background="@drawable/selector_color"
-        android:text="Salvar"
+        android:background="@drawable/selector_button"
+        android:text="@string/select_char_save"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:onClick="save"
-
         />
 
 </RelativeLayout>

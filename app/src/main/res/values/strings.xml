@@ -1,4 +1,35 @@
 <resources>
+    <!-- Main -->
     <string name="app_name">Beacon</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Main Screen -->
+
+    <string name="main_maxdistance">distância máxima</string>
+
+    <!-- Bluetooth -->
+
+    <string name="bluetooth_load">Bluetooth \n HABILITADO...</string>
+
+    <!-- Beacon List -->
+
+    <string name="beaconlist_load">Loading...</string>
+
+    <!-- Character Options -->
+    <string name="select_char_distance">Qual a distância máxima pode ficar o seu pranchinha?</string>
+    <string name="select_char_sex">Qual o SEXO?</string>
+    <string name="select_char_name">Qual o nome da seu Pranchinha:</string>
+    <string name="select_char_save">Salvar</string>
+    <string name="select_char_cancel">Sair</string>
+
+    <!-- Distance Warning -->
+
+    <string name="dist_warning_ok">OK, entendi</string>
+    <string name="dist_warning_toofar">Está muito longe!!</string>
+    <string name="dist_warning_attention">ATENÇÃO!</string>
+
+    <!-- Connection Failed -->
+
+    <string name="connection_failed_ok">CONFIRMAR</string>
+    <string name="connection_failed_error">Lamentamos a sua \n desconexão :(!</string>
 </resources>
