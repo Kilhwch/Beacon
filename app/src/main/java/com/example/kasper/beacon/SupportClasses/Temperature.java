@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -25,6 +26,7 @@ public class Temperature extends AsyncTask<Void, Void, String> {
             DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
             DocumentBuilder b = f.newDocumentBuilder();
             Document doc = b.parse("http://weather.yahooapis.com/forecastrss?w=455822&u=c");
+
             doc.getDocumentElement().normalize();
 
             NodeList items = doc.getElementsByTagName("item");
@@ -34,16 +36,12 @@ public class Temperature extends AsyncTask<Void, Void, String> {
                 Element e = (Element) n;
 
                 NodeList list = e.getElementsByTagName("*");
-                Node temperature = list.item(5).getAttributes().item(2);
-                String result = temperature.getTextContent();
-                System.out.println("Result was: " + result);
-                return result;
+                Node temperature = list.item(5).getAttributes().item(2); // horrible solution that may cause problems,
+                return temperature.getTextContent();                     // but done this way due to easy implementation
             }
         } catch (Exception e) {
             this.exception = e;
-            System.out.println("Returns null exc");
         }
-        System.out.println("Returns null");
         return null;
     }
 
@@ -51,7 +49,6 @@ public class Temperature extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String result) {
         if (result != null) delegate.processFinish(result);
         else {
-            System.out.println("onPostExecute was null");
             System.out.println(exception.getMessage());
         }
     }

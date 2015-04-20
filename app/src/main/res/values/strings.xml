@@ -1,4 +1,6 @@
 <resources>
+    <!-- Note that not all Strings are here -->
+
     <!-- Main -->
     <string name="app_name">Beacon</string>
     <string name="action_settings">Settings</string>
@@ -25,7 +27,7 @@
     <!-- Distance Warning -->
 
     <string name="dist_warning_ok">OK, entendi</string>
-    <string name="dist_warning_toofar">Está muito longe!!</string>
+    <string name="dist_warning_text">Está muito longe!!</string>
     <string name="dist_warning_attention">ATENÇÃO!</string>
 
     <!-- Connection Failed -->

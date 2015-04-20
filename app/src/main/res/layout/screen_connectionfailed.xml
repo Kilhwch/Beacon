@@ -23,8 +23,6 @@
         android:background="@drawable/selector_color"
         android:layout_below="@id/top"
         android:layout_centerHorizontal="true"
-
-
         />
 
 </RelativeLayout>

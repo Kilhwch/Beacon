@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.kasper.beacon.R;
 
@@ -13,12 +14,19 @@ import com.example.kasper.beacon.R;
  */
 public class WarningDistance extends Activity {
 
+    private TextView warnDist;
     private Vibrator v;
     private Button okButton;
+
+
     @Override
     protected void onCreate(Bundle instance) {
         super.onCreate(instance);
         setContentView(R.layout.screen_warningdist);
+
+        double distance = getIntent().getDoubleExtra("distance", 0);
+        warnDist = (TextView) findViewById(R.id.warningDistance);
+        warnDist.setText(String.format("%.1fm", distance));
 
         v = (Vibrator) getSystemService(this.VIBRATOR_SERVICE);
         v.vibrate(300);

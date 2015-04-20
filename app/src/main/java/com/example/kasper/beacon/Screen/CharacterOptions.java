@@ -56,31 +56,10 @@ public class CharacterOptions extends Activity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
-
-        menino.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (!male) menina.setBackgroundResource(R.color.darkerwhite);
-                menino.setBackgroundResource(R.color.blue);
-                male = true;
-                buttonDelay(menino);
-                return true;
-            }
-        });
-
-        menina.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (male) menino.setBackgroundResource(R.color.darkerwhite);
-                menina.setBackgroundResource(R.color.pink);
-                male = false;
-                buttonDelay(menina);
-                return true;
-            }
-        });
     }
 
-    public void save(View v) {
+    public void saveClick(View v) {
+        Toast.makeText(this, "Male: " + male, Toast.LENGTH_SHORT).show();
         if (name.getText().toString().equals("")) Toast.makeText(getBaseContext(), "Please enter a name", Toast.LENGTH_SHORT).show();
         else {
             Intent beacon = getIntent();
@@ -91,15 +70,25 @@ public class CharacterOptions extends Activity {
         }
     }
 
-    public void cancel(View v) {
+    public void cancelClick(View v) {
         onBackPressed();
+    }
+
+    public void meninoClick(View v) {
+        male = true;
+        buttonDelay(menino);
+    }
+
+    public void meninaClick(View v) {
+        male = false;
+        buttonDelay(menina);
     }
 
 
     public void init() {
         maxDistance.setText("distância máxima " + barValue);
-        menino.setBackgroundResource(R.color.blue);
-        menino.setPressed(true);
+        //menino.setBackgroundResource(R.color.blue);
+        //menino.setPressed(true);
     }
 
     public void buttonDelay(final Button button) {

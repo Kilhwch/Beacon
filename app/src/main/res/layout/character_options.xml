@@ -48,6 +48,8 @@
         android:layout_height="80dp"
         android:text="Menino"
         android:layout_below="@+id/chardetails_sex"
+        android:background="@drawable/selector_button"
+        android:onClick="meninoClick"
         />
 
     <Button android:id="@+id/chardetails_menina"
@@ -56,6 +58,8 @@
         android:text="Menina"
         android:layout_below="@+id/chardetails_sex"
         android:layout_alignParentRight="true"
+        android:background="@drawable/selector_button"
+        android:onClick="meninaClick"
         />
 
     <TextView android:id="@+id/chardetails_selectdistance"
@@ -94,7 +98,7 @@
         android:background="@drawable/selector_button"
         android:text="@string/select_char_cancel"
         android:layout_alignParentBottom="true"
-        android:onClick="cancel"
+        android:onClick="cancelClick"
         />
 
     <Button android:id="@+id/salvar"
@@ -104,7 +108,7 @@
         android:text="@string/select_char_save"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:onClick="save"
+        android:onClick="saveClick"
         />
 
 </RelativeLayout>

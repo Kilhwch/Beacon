@@ -17,6 +17,8 @@ import com.estimote.sdk.Region;
 import com.estimote.sdk.Utils;
 import com.example.kasper.beacon.R;
 import com.example.kasper.beacon.SupportClasses.ASyncResponse;
+import com.example.kasper.beacon.SupportClasses.AvrgDistance;
+import com.example.kasper.beacon.SupportClasses.Temperature;
 
 import java.util.List;
 
@@ -25,8 +27,9 @@ import java.util.List;
  */
 public class MainScreen extends Activity implements ASyncResponse {
 
-    //Temperature tmp_manager = new Temperature();
     private static final String TAG = MainScreen.class.getSimpleName();
+    private Temperature tmp_manager = new Temperature();
+
 
     // Bar Settings
     private SeekBar bar;
@@ -35,6 +38,7 @@ public class MainScreen extends Activity implements ASyncResponse {
 
     // Distance values on screen
     private TextView distance;
+    private TextView outsideTemperature;
 
     // Beacon Settings
     private BeaconManager bc_manager;
@@ -52,14 +56,7 @@ public class MainScreen extends Activity implements ASyncResponse {
     private static final double RELATIVE_STOP_POS = 450.0 / 450.0;
 
     private Region SINGLE;
-
-    // Calculating average
-    private int counter = 0;
-    private int MAX = 4;
-    private double[] average;
-    private double currentAverage = 0;
-    private static final int offset = 15;
-
+    private AvrgDistance next = new AvrgDistance();
 
     @Override
     protected void onCreate(Bundle instance) {
@@ -67,13 +64,13 @@ public class MainScreen extends Activity implements ASyncResponse {
         setContentView(R.layout.mainscreen);
 
         dotView = findViewById(R.id.dot);
-//        tmp_manager.execute();
-//        tmp_manager.delegate = this;
+        tmp_manager.execute();
+        tmp_manager.delegate = this;
 
-        average = new double[MAX];
         bar = (SeekBar) findViewById(R.id.mainscr_bar);
         maxDistance = (TextView) findViewById(R.id.mainscr_maxDistance);
         distance = (TextView) findViewById(R.id.mainscr_distance);
+        outsideTemperature = (TextView) findViewById(R.id.mainscr_temperature);
         init();
 
         bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -100,13 +97,15 @@ public class MainScreen extends Activity implements ASyncResponse {
                     @Override
                     public void run() {
                         if (!beacons.isEmpty()) {
-                            double dist = Utils.computeAccuracy(beacons.get(0));
-                            distance.setText(String.format("Distance: %.1fm \n (Average: %.1fm)", dist, currentAverage));
-                            calculate(dist);
+                            double newDistance = Utils.computeAccuracy(beacons.get(0));
+                            double currentAverage = next.getCurrentAverage();
+                            distance.setText(String.format("Distance: %.1fm \n (Average: %.1fm)", newDistance, currentAverage));
+                            next.calculate(newDistance, currentAverage);
                             updateDistanceView();
 
                             if (currentAverage > barValue) {
                                 Intent i = new Intent(MainScreen.this, WarningDistance.class);
+                                i.putExtra("distance", currentAverage);
                                 startActivity(i);
                             }
                         }
@@ -152,51 +151,29 @@ public class MainScreen extends Activity implements ASyncResponse {
     private void init() {
         beacon = getIntent().getParcelableExtra("beacon");
         barValue = getIntent().getIntExtra("barvalue", 5);
+        bar.setProgress(barValue);
         maxDistance.setText("distância máxima: " + barValue);
         SINGLE = new Region("single", beacon.getProximityUUID(), beacon.getMajor(), beacon.getMinor());
+
     }
 
-    private void calculate(double dist) {
-        if (counter < MAX) {
-            if ((currentAverage + offset) > dist) {
-                average[counter] = dist;
-                counter++;
-            }
-        }
-        else {
-            double newAverage = countAverage();
-            currentAverage = newAverage;
-            average = new double[MAX];
-            counter = 0;
-        }
-    }
-
-    private Double countAverage() {
-        double avgDistance = 0;
-            for (int i = 0; i < average.length; i++) {
-            avgDistance += average[i];
-        }
-        return (avgDistance / MAX);
-    }
 
     // View updated start
-
 
     public void updateDistanceView() {
         if (segmentLength == -1) {
             return;
         }
         dotView.animate().translationY(computeDotPosY()).start();
-
     }
 
     public int computeDotPosY() {
-        double distance = Math.min(currentAverage, 11.0);
+        double distance = Math.min(next.getCurrentAverage(), 11.0); // check these values again, should be set to MAX distance?
         return startY + (int) (segmentLength * (distance / 11.0));
-
     }
 
     // View updated end
+
     @Override
     protected void onDestroy() {
         bc_manager.disconnect();
@@ -220,7 +197,9 @@ public class MainScreen extends Activity implements ASyncResponse {
 
     @Override
     public void processFinish(String temperature) {
-        this.temperature = temperature;
-        System.out.println("processFinish set to: " + temperature);
+        if (temperature != null) {
+            this.temperature = temperature;
+            outsideTemperature.setText("Temperature: " + this.temperature + "°C");
+        } else outsideTemperature.setText("Error when trying to fetching temperature");
     }
 }

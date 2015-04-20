@@ -6,7 +6,7 @@
     android:background="@color/orange">
 
 
-    <TextView android:id="@+id/top"
+    <TextView android:id="@+id/warningWarn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dist_warning_attention"
@@ -16,17 +16,25 @@
         android:paddingTop="150dp"
         />
 
-    <TextView android:id="@+id/center"
+    <TextView android:id="@+id/warningDistanceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dist_warning_toofar"
+        android:text="@string/dist_warning_text"
         android:textSize="25dp"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:paddingTop="100dp"
-        android:paddingBottom="100dp"
-        android:layout_below="@+id/top"
+        android:paddingBottom="20dp"
+        android:layout_below="@+id/warningWarn"
+        />
 
+    <TextView android:id="@+id/warningDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/warningDistanceText"
         />
 
     <Button android:id="@+id/warningOk"
@@ -34,8 +42,8 @@
         android:layout_height="70dp"
         android:text="@string/dist_warning_ok"
         android:background="@drawable/selector_color"
-        android:layout_below="@+id/center"
         android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
         />
 
 </RelativeLayout>
