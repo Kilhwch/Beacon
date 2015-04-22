@@ -12,7 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/select_char_name"
-        android:textColor="@color/primary_text_default_material_dark"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:gravity="center"
         android:paddingTop="40dp"
@@ -38,29 +38,30 @@
         android:textColor="@color/primary_text_default_material_dark"
         android:textSize="20dp"
         android:gravity="center"
-        android:paddingTop="40dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:layout_below="@+id/chardetails_text"
 
         />
 
-    <Button android:id="@+id/chardetails_menino"
-        android:layout_width="130dp"
-        android:layout_height="80dp"
-        android:text="Menino"
-        android:layout_below="@+id/chardetails_sex"
-        android:background="@drawable/selector_button"
-        android:onClick="meninoClick"
-        />
+        <RadioGroup
+            android:id="@+id/radioSex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/chardetails_sex"
+            android:orientation="horizontal"
+            >
 
-    <Button android:id="@+id/chardetails_menina"
-        android:layout_width="130dp"
-        android:layout_height="80dp"
-        android:text="Menina"
-        android:layout_below="@+id/chardetails_sex"
-        android:layout_alignParentRight="true"
-        android:background="@drawable/selector_button"
-        android:onClick="meninaClick"
-        />
+            <RadioButton android:id="@+id/chardetails_menino"
+                android:layout_width="130dp"
+                android:layout_height="70dp"
+                android:text="Menino"
+                android:background="@drawable/notpressed"
+                android:onClick="meninoClick"
+                android:checked="true"
+                />
+
+        </RadioGroup>
 
     <TextView android:id="@+id/chardetails_selectdistance"
         android:layout_width="fill_parent"
@@ -70,7 +71,7 @@
         android:textColor="@color/primary_text_default_material_dark"
         android:gravity="center"
         android:paddingTop="40dp"
-        android:layout_below="@+id/chardetails_menina"
+        android:layout_below="@+id/radioSex"
 
         />
 
@@ -110,5 +111,14 @@
         android:layout_alignParentBottom="true"
         android:onClick="saveClick"
         />
+
+    <RadioButton android:id="@+id/chardetails_menina"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:text="Menina"
+        android:background="@drawable/notpressed"
+        android:onClick="meninaClick"
+        android:layout_alignTop="@+id/radioSex"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

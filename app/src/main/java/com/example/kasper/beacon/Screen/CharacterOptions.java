@@ -3,13 +3,17 @@ package com.example.kasper.beacon.Screen;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.kasper.beacon.R;
 
@@ -21,15 +25,11 @@ import java.util.TimerTask;
  */
 public class CharacterOptions extends Activity {
 
-    // Bar settings
     private SeekBar bar;
     private Integer barValue = 5;
 
     private boolean male = true;
     private EditText name;
-    private Button menino;
-    private Button menina;
-
     private TextView maxDistance;
 
     @Override
@@ -39,8 +39,6 @@ public class CharacterOptions extends Activity {
 
         name = (EditText) findViewById(R.id.chardetails_text);
         bar = (SeekBar) findViewById(R.id.chardetails_bar);
-        menino = (Button) findViewById(R.id.chardetails_menino);
-        menina = (Button) findViewById(R.id.chardetails_menina);
 
         maxDistance = (TextView) findViewById(R.id.chardetails_maxDistance);
         init();
@@ -59,13 +57,13 @@ public class CharacterOptions extends Activity {
     }
 
     public void saveClick(View v) {
-        Toast.makeText(this, "Male: " + male, Toast.LENGTH_SHORT).show();
         if (name.getText().toString().equals("")) Toast.makeText(getBaseContext(), "Please enter a name", Toast.LENGTH_SHORT).show();
         else {
             Intent beacon = getIntent();
             Intent i = new Intent(this, MainScreen.class);
             i.putExtra("beacon", beacon.getParcelableExtra("placeholder"));
             i.putExtra("barvalue", barValue);
+            // putExtra <male> <female> if needed
             startActivity(i);
         }
     }
@@ -76,36 +74,13 @@ public class CharacterOptions extends Activity {
 
     public void meninoClick(View v) {
         male = true;
-        buttonDelay(menino);
     }
 
     public void meninaClick(View v) {
         male = false;
-        buttonDelay(menina);
     }
-
 
     public void init() {
         maxDistance.setText("distância máxima " + barValue);
-        //menino.setBackgroundResource(R.color.blue);
-        //menino.setPressed(true);
-    }
-
-    public void buttonDelay(final Button button) {
-        button.setEnabled(false);
-        Timer buttonTimer = new Timer();
-        buttonTimer.schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-
-                    @Override
-                    public void run() {
-                        button.setEnabled(true);
-                    }
-                });
-            }
-        }, 1000);
     }
 }

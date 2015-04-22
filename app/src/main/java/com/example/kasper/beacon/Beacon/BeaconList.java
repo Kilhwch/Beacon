@@ -32,8 +32,7 @@ public class BeaconList extends Activity {
     private static final Region ALL = new Region("all", null, null, null);
     private int bc_count = 0;
 
-    private TextView main;
-    private TextView subLabel;
+    private TextView main, subLabel;
     private ListView list;
 
 
