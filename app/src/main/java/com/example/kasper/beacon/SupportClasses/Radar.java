@@ -17,7 +17,7 @@ public class Radar extends View {
 
     public Radar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        drawable = context.getResources().getDrawable(R.drawable.fundoinicio);
+        drawable = context.getResources().getDrawable(R.drawable.backgroundboy);
         setWillNotDraw(false);
     }
 

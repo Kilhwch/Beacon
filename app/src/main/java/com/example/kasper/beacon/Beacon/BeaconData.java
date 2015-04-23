@@ -6,16 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.estimote.sdk.Beacon;
 import com.estimote.sdk.Utils;
 import com.example.kasper.beacon.R;
-
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * Created by kasper on 3/20/2015.

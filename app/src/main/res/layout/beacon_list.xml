@@ -1,41 +1,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="30dp"
-    android:paddingRight="30dp"
-    android:background="@drawable/fundo2"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:background="@drawable/backgroundescolheaparelho"
 
     >
 
-    <TextView android:id="@+id/bcselect_mainlabel"
-        android:layout_width="fill_parent"
+    <LinearLayout android:id="@+id/layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/beaconlist_load"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:gravity="center"
-        android:paddingTop="40dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        >
+        <TextView android:id="@+id/bcselect_mainlabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/beaconlist_load"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:background="@drawable/loading_border"
+            android:maxLines="5"
 
-     />
 
-    <TextView android:id="@+id/bcselect_sublabel"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="18dp"
-        android:gravity="center"
-        android:layout_below="@+id/bcselect_mainlabel"
-
-        />
+         />
+    </LinearLayout>
 
     <ListView android:id="@+id/bcselect_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bcselect_sublabel"
-
+        android:layout_below="@+id/layout"
+        android:paddingTop="20dp"
         />
 
 </RelativeLayout>

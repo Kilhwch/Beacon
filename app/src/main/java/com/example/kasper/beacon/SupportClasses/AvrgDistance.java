@@ -6,7 +6,7 @@ package com.example.kasper.beacon.SupportClasses;
 public class AvrgDistance {
 
     private final int MAX = 4;
-    private final int OFFSET = 5;
+    private final int OFFSET = 4;
     private int counter = 0;
     private double[] average;
     public double currentAverage = 0;

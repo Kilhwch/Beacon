@@ -1,24 +1,14 @@
 package com.example.kasper.beacon.Screen;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.ColorRes;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
-
 import com.example.kasper.beacon.R;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * Created by kasper on 3/23/2015.
@@ -27,6 +17,8 @@ public class CharacterOptions extends Activity {
 
     private SeekBar bar;
     private Integer barValue = 5;
+
+    private RadioButton menino, menina;
 
     private boolean male = true;
     private EditText name;
@@ -39,6 +31,9 @@ public class CharacterOptions extends Activity {
 
         name = (EditText) findViewById(R.id.chardetails_text);
         bar = (SeekBar) findViewById(R.id.chardetails_bar);
+
+        menino = (RadioButton) findViewById(R.id.chardetails_menino);
+        menina = (RadioButton) findViewById(R.id.chardetails_menina);
 
         maxDistance = (TextView) findViewById(R.id.chardetails_maxDistance);
         init();
@@ -74,10 +69,15 @@ public class CharacterOptions extends Activity {
 
     public void meninoClick(View v) {
         male = true;
+        menino.setBackground(getResources().getDrawable(R.drawable.btnboyselected));
+        menina.setBackground(getResources().getDrawable(R.drawable.btngirlnotselected));
+
     }
 
     public void meninaClick(View v) {
         male = false;
+        menina.setBackground(getResources().getDrawable(R.drawable.btngirlselected));
+        menino.setBackground(getResources().getDrawable(R.drawable.btnboynotselected));
     }
 
     public void init() {

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="30dp"
     android:paddingRight="30dp"
-    android:background="@drawable/fundoturma"
+    android:background="@drawable/backgroundgirlandboy"
     >
 
     <TextView android:id="@+id/chardetails_name"
@@ -50,15 +50,24 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/chardetails_sex"
             android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
             >
 
             <RadioButton android:id="@+id/chardetails_menino"
-                android:layout_width="130dp"
+                android:layout_width="120dp"
                 android:layout_height="70dp"
-                android:text="Menino"
-                android:background="@drawable/notpressed"
+                android:background="@drawable/btnboyselected"
                 android:onClick="meninoClick"
                 android:checked="true"
+
+                />
+
+            <RadioButton android:id="@+id/chardetails_menina"
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:background="@drawable/btngirlnotselected"
+                android:onClick="meninaClick"
+
                 />
 
         </RadioGroup>
@@ -111,14 +120,5 @@
         android:layout_alignParentBottom="true"
         android:onClick="saveClick"
         />
-
-    <RadioButton android:id="@+id/chardetails_menina"
-        android:layout_width="130dp"
-        android:layout_height="70dp"
-        android:text="Menina"
-        android:background="@drawable/notpressed"
-        android:onClick="meninaClick"
-        android:layout_alignTop="@+id/radioSex"
-        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

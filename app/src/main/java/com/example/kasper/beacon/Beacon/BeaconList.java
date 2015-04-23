@@ -3,8 +3,12 @@ package com.example.kasper.beacon.Beacon;
 import android.app.Activity;
 import android.content.Intent;
 import com.estimote.sdk.Region;
+import android.graphics.Color;
 import android.os.RemoteException;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,7 +36,7 @@ public class BeaconList extends Activity {
     private static final Region ALL = new Region("all", null, null, null);
     private int bc_count = 0;
 
-    private TextView main, subLabel;
+    private TextView main;
     private ListView list;
 
 
@@ -44,7 +48,6 @@ public class BeaconList extends Activity {
 
         adapter = new BeaconData(this);
         main = (TextView) findViewById(R.id.bcselect_mainlabel);
-        subLabel = (TextView) findViewById(R.id.bcselect_sublabel);
         list = (ListView) findViewById(R.id.bcselect_list);
         list.setAdapter(adapter);
         list.setOnItemClickListener(createOnItemClickListener());
@@ -92,11 +95,14 @@ public class BeaconList extends Activity {
     public void loadingText() {
         if (bc_count==0) {
             main.setText("Loading...");
-            subLabel.setText("");
         }
         else {
-            main.setText("Olá! Achamos " + bc_count + " pranchas:");
-            subLabel.setText("Selecione a sua e personalize.");
+            String s = "Olá! Achamos " + bc_count + " pranchas: \n Selecione a sua e personalize.";
+
+            SpannableString spannable = new SpannableString(s);
+            spannable.setSpan(new RelativeSizeSpan(0.85f), 24, s.length(), 0);
+            spannable.setSpan(new ForegroundColorSpan(Color.BLACK), 24, s.length(), 0);// set color
+            main.setText(spannable);
         }
     }
 

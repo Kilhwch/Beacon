@@ -50,8 +50,8 @@ public class MainScreen extends Activity implements ASyncResponse {
 
 
     private String temperature;
-    private static final double RELATIVE_START_POS = 220.0 / 450.0;
-    private static final double RELATIVE_STOP_POS = 450.0 / 450.0;
+    private static final double RELATIVE_START_POS = 230.0 / 260.0; // 220.0 / 450.0
+    private static final double RELATIVE_STOP_POS = 260.0 / 260.0; // 450.0 / 450.0
 
     private Region SINGLE;
     private AvrgDistance next = new AvrgDistance();
@@ -166,9 +166,8 @@ public class MainScreen extends Activity implements ASyncResponse {
     }
 
     public int computeDotPosY() {
-        double distance = Math.min(next.getCurrentAverage(), barValue); // check these values again, should be set to MAX distance?
-        return -(startY + (int) (segmentLength * (distance / barValue))); // was previously "11"
-       // Flipping the result to draw North (instead of South)
+        double distance = next.getCurrentAverage(); // hardcode might cause probs
+        return startY + (int) (segmentLength * -(distance / 2)); // hardcode might cause probs
     }
 
     // View updated end
