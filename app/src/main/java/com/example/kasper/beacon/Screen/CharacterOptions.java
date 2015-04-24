@@ -15,12 +15,12 @@ import com.example.kasper.beacon.R;
  */
 public class CharacterOptions extends Activity {
 
-    private SeekBar bar;
+    public static SeekBar bar;
     private Integer barValue = 5;
 
     private RadioButton menino, menina;
 
-    private boolean male = true;
+    public static boolean male = true;
     private EditText name;
     private TextView maxDistance;
 
@@ -58,7 +58,7 @@ public class CharacterOptions extends Activity {
             Intent i = new Intent(this, MainScreen.class);
             i.putExtra("beacon", beacon.getParcelableExtra("placeholder"));
             i.putExtra("barvalue", barValue);
-            // putExtra <male> <female> if needed
+            i.putExtra("sex", male);
             startActivity(i);
         }
     }
@@ -71,7 +71,6 @@ public class CharacterOptions extends Activity {
         male = true;
         menino.setBackground(getResources().getDrawable(R.drawable.btnboyselected));
         menina.setBackground(getResources().getDrawable(R.drawable.btngirlnotselected));
-
     }
 
     public void meninaClick(View v) {

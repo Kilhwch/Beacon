@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import com.example.kasper.beacon.R;
+import com.example.kasper.beacon.Screen.CharacterOptions;
 
 
 /**
@@ -14,10 +15,15 @@ import com.example.kasper.beacon.R;
 public class Radar extends View {
 
     private final Drawable drawable;
+    private final boolean sex;
 
     public Radar(Context context, AttributeSet attrs) {
         super(context, attrs);
-        drawable = context.getResources().getDrawable(R.drawable.backgroundboy);
+        sex = CharacterOptions.male;
+
+        if (sex) drawable = context.getResources().getDrawable(R.drawable.backgroundboy);
+        else drawable = context.getResources().getDrawable(R.drawable.backgroundgirl);
+
         setWillNotDraw(false);
     }
 

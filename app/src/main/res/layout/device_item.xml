@@ -12,13 +12,13 @@
         android:background="@drawable/selector_listselector"
 
         >
-    <ImageView android:id="@+id/beacon"
+    <ImageView android:id="@+id/list_icon"
         android:layout_width="60dp"
         android:layout_height="80dp"
         android:layout_gravity="center_vertical"
         android:layout_marginRight="10dp"
         android:padding="10dp"
-        android:src="@drawable/beacon_grey"
+        android:src="@drawable/list_icon"
         />
 
 
@@ -29,7 +29,7 @@
         android:layout_centerInParent="true"
         android:text="This is a long Device test name"
         android:textColor="@color/black"
-        android:layout_toRightOf="@id/beacon"
+        android:layout_toRightOf="@id/list_icon"
         />
     </RelativeLayout>
 </RelativeLayout>

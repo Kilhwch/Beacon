@@ -7,7 +7,6 @@ import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +31,6 @@ public class MainScreen extends Activity implements ASyncResponse {
 
 
     // Bar Settings
-    private SeekBar bar;
     private Integer barValue;
     private TextView maxDistance;
 
@@ -48,10 +46,12 @@ public class MainScreen extends Activity implements ASyncResponse {
     private int startY = -1;
     private int segmentLength = -1;
 
+    private double newDistance;
+
 
     private String temperature;
-    private static final double RELATIVE_START_POS = 230.0 / 260.0; // 220.0 / 450.0
-    private static final double RELATIVE_STOP_POS = 260.0 / 260.0; // 450.0 / 450.0
+    private static final double RELATIVE_START_POS = 230.0 / 260.0; // 230.0 / 260.0
+    private static final double RELATIVE_STOP_POS = 260.0 / 260.0; // 260.0 / 260.0
 
     private Region SINGLE;
     private AvrgDistance next = new AvrgDistance();
@@ -61,31 +61,15 @@ public class MainScreen extends Activity implements ASyncResponse {
         super.onCreate(instance);
         setContentView(R.layout.mainscreen);
 
+
         dotView = findViewById(R.id.dot);
         tmp_manager.execute();
         tmp_manager.delegate = this;
 
-        bar = (SeekBar) findViewById(R.id.mainscr_bar);
         maxDistance = (TextView) findViewById(R.id.mainscr_maxDistance);
         distance = (TextView) findViewById(R.id.mainscr_distance);
         outsideTemperature = (TextView) findViewById(R.id.mainscr_temperature);
         init();
-
-        bar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                barValue = progress;
-                maxDistance.setText("distância máxima: " + barValue);
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
 
         bc_manager = new BeaconManager(this);
         bc_manager.setRangingListener(new BeaconManager.RangingListener() {
@@ -95,7 +79,7 @@ public class MainScreen extends Activity implements ASyncResponse {
                     @Override
                     public void run() {
                         if (!beacons.isEmpty()) {
-                            double newDistance = Utils.computeAccuracy(beacons.get(0));
+                            newDistance = Utils.computeAccuracy(beacons.get(0));
                             double currentAverage = next.getCurrentAverage();
                             distance.setText(String.format("Distance: %.1fm \n (Average: %.1fm)", newDistance, currentAverage));
                             next.calculate(newDistance, currentAverage);
@@ -149,8 +133,7 @@ public class MainScreen extends Activity implements ASyncResponse {
     private void init() {
         beacon = getIntent().getParcelableExtra("beacon");
         barValue = getIntent().getIntExtra("barvalue", 5);
-        bar.setProgress(barValue);
-        maxDistance.setText("distância máxima: " + barValue);
+        maxDistance.setText("distância máxima: \n " + barValue + "m");
         SINGLE = new Region("single", beacon.getProximityUUID(), beacon.getMajor(), beacon.getMinor());
 
     }
@@ -166,8 +149,8 @@ public class MainScreen extends Activity implements ASyncResponse {
     }
 
     public int computeDotPosY() {
-        double distance = next.getCurrentAverage(); // hardcode might cause probs
-        return startY + (int) (segmentLength * -(distance / 2)); // hardcode might cause probs
+        double distance = newDistance; // switch into next.getCurrentAverage if you want to update the screen less frequently
+        return startY + (int) (segmentLength * -(distance / 2));
     }
 
     // View updated end
