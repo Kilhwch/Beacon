@@ -26,8 +26,16 @@ import com.example.kasper.beacon.R;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Created by kasper on 3/20/2015.
+ *
+ * Loads all Estimote Beacons on the screen.
+ */
+
 
 public class BeaconList extends Activity {
+
+
 
     // Beacon (bc) related
     private BeaconManager bc_manager;

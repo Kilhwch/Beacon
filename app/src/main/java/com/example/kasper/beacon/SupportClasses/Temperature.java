@@ -13,6 +13,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
  * Created by kasper on 4/13/2015.
+ *
+ * Parses temperature (currently Curitiba) from Yahoo.
  */
 public class Temperature extends AsyncTask<Void, Void, String> {
 
@@ -48,8 +50,6 @@ public class Temperature extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         if (result != null) delegate.processFinish(result);
-        else {
-            System.out.println(exception.getMessage());
-        }
+        else delegate.processFinish("null");
     }
 }

@@ -16,13 +16,15 @@ import com.estimote.sdk.Region;
 import com.estimote.sdk.Utils;
 import com.example.kasper.beacon.R;
 import com.example.kasper.beacon.SupportClasses.ASyncResponse;
-import com.example.kasper.beacon.SupportClasses.AvrgDistance;
+import com.example.kasper.beacon.SupportClasses.AverageDistance;
 import com.example.kasper.beacon.SupportClasses.Temperature;
 
 import java.util.List;
 
 /**
  * Created by kasper on 3/23/2015.
+ *
+ * Main radar screen.
  */
 public class MainScreen extends Activity implements ASyncResponse {
 
@@ -54,22 +56,22 @@ public class MainScreen extends Activity implements ASyncResponse {
     private static final double RELATIVE_STOP_POS = 260.0 / 260.0; // 260.0 / 260.0
 
     private Region SINGLE;
-    private AvrgDistance next = new AvrgDistance();
+    private AverageDistance average = new AverageDistance();
 
     @Override
     protected void onCreate(Bundle instance) {
         super.onCreate(instance);
         setContentView(R.layout.mainscreen);
 
-
-        dotView = findViewById(R.id.dot);
-        tmp_manager.execute();
-        tmp_manager.delegate = this;
+        dotView = findViewById(R.id.position);
 
         maxDistance = (TextView) findViewById(R.id.mainscr_maxDistance);
         distance = (TextView) findViewById(R.id.mainscr_distance);
         outsideTemperature = (TextView) findViewById(R.id.mainscr_temperature);
         init();
+
+        tmp_manager.execute();
+        tmp_manager.delegate = this;
 
         bc_manager = new BeaconManager(this);
         bc_manager.setRangingListener(new BeaconManager.RangingListener() {
@@ -80,9 +82,9 @@ public class MainScreen extends Activity implements ASyncResponse {
                     public void run() {
                         if (!beacons.isEmpty()) {
                             newDistance = Utils.computeAccuracy(beacons.get(0));
-                            double currentAverage = next.getCurrentAverage();
+                            double currentAverage = average.getCurrentAverage();
                             distance.setText(String.format("Distance: %.1fm \n (Average: %.1fm)", newDistance, currentAverage));
-                            next.calculate(newDistance, currentAverage);
+                            average.add(newDistance);
                             updateDistanceView();
 
                             if (currentAverage > barValue) {
@@ -149,7 +151,7 @@ public class MainScreen extends Activity implements ASyncResponse {
     }
 
     public int computeDotPosY() {
-        double distance = newDistance; // switch into next.getCurrentAverage if you want to update the screen less frequently
+        double distance = average.getCurrentAverage(); // switch into average.getCurrentAverage if you want to update the screen less frequently
         return startY + (int) (segmentLength * -(distance / 2));
     }
 
@@ -178,9 +180,9 @@ public class MainScreen extends Activity implements ASyncResponse {
 
     @Override
     public void processFinish(String temperature) {
-        if (temperature != null) {
+        if (temperature != "null") {
             this.temperature = temperature;
             outsideTemperature.setText("Temperature: " + this.temperature + "°C");
-        } else outsideTemperature.setText("Error when trying to fetching temperature");
+        } else outsideTemperature.setText("Temperature: \n Connection error");
     }
 }

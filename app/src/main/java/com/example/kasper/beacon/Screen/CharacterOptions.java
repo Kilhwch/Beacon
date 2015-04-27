@@ -12,6 +12,8 @@ import com.example.kasper.beacon.R;
 
 /**
  * Created by kasper on 3/23/2015.
+ *
+ * Character options in order to specify name, sex and max distance/
  */
 public class CharacterOptions extends Activity {
 

@@ -14,6 +14,7 @@ import java.util.Collection;
 
 /**
  * Created by kasper on 3/20/2015.
+ *
  */
 public class BeaconData extends BaseAdapter {
 

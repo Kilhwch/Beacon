@@ -10,11 +10,11 @@ import com.example.kasper.beacon.Bluetooth.BluetoothCheck;
  * Created by kasper on 3/23/2015.
  * Transition through classes below:
  *
- * Main_Activity        (Main method)       →
- * BluetoothCheck       (Checks bluetooth)  →
- * Beacon_Select        (Shows beacons)     →
- * Character_Options                        →
- * Main_Screen          (Main mainscreen screen)
+ * MainActivity        (Main method)       →
+ * BluetoothCheck      (Checks bluetooth)  →
+ * BeaconList          (Shows beacons)     →
+ * CharacterOptions                        →
+ * MainScreen          (Main mainscreen screen)
  */
 public class MainActivity extends Activity {
 

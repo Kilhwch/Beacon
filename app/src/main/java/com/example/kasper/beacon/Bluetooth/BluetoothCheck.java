@@ -11,6 +11,9 @@ import com.example.kasper.beacon.R;
 
 /**
  * Created by kasper on 3/23/2015.
+ *
+ * Checks whether Bluetooth is on/off, and if Bluetooth Low Energy (BLE)
+ * is supported or not.
  */
 public class BluetoothCheck extends Activity {
 
