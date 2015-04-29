@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.kasper.beacon.Main.MainActivity"
+            android:name="com.example.kasper.beacon.Bluetooth.BluetoothCheck"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,6 @@
         </activity>
 
         <activity android:name="com.example.kasper.beacon.Beacon.BeaconList"></activity>
-        <activity android:name="com.example.kasper.beacon.Bluetooth.BluetoothCheck"></activity>
         <activity android:name="com.example.kasper.beacon.Screen.CharacterOptions"></activity>
         <activity android:name="com.example.kasper.beacon.Screen.MainScreen"></activity>
         <activity android:name="com.example.kasper.beacon.Screen.WarningDistance"></activity>

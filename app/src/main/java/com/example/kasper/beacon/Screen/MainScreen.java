@@ -151,7 +151,7 @@ public class MainScreen extends Activity implements ASyncResponse {
     }
 
     public int computeDotPosY() {
-        double distance = average.getCurrentAverage(); // switch into average.getCurrentAverage if you want to update the screen less frequently
+        double distance = average.getCurrentAverage();
         return startY + (int) (segmentLength * -(distance / 2));
     }
 

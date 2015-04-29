@@ -4,8 +4,8 @@ package com.example.kasper.beacon.SupportClasses;
  * Created by kasper on 4/20/2015.
  *
  * This class calculates average distance of the Beacon.
- * 1. Take 4 distance values and count their average into avg1
- * 2. Take 4 distance values and count their average into avg2
+ * 1. Take 4 distance values and count their average into avg1 (*these 4 values are often similar)
+ * 2. Take 4 distance values and count their average into avg2 (*these 4 values are often similar)
  * 3. Take the average of avg1 and avg2
  */
 public class AverageDistance {
