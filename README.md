@@ -10,3 +10,6 @@ Under development...
 ユーザーは自分の選択したBeaconをフォローすることができます（シンプルなUIレーダー含む）。
 
 開発中・・・
+
+
+![alt tag](https://github.com/Kilhwch/Beacon/blob/master/app/src/main/res/drawable/backgroundboy.png)
